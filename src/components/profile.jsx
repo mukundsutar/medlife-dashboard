@@ -49,6 +49,7 @@ export default function Profile({ apiData }) {
                         flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "space-evenly",
+                        borderRadius: 5,
                     }}
                 >
                     <Avatar

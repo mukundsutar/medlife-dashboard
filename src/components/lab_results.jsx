@@ -9,16 +9,15 @@ import {
 import React from "react";
 import Download from "../assets/download.png";
 
-export default function LabResults({apiData}) {
-
+export default function LabResults({ apiData }) {
     return (
         <>
-            <Box sx={{ bgcolor: "#fff", p: 2 }}>
+            <Box sx={{ bgcolor: "#fff", p: 2, borderRadius: 5 }}>
                 <Typography variant="h5" sx={{ mb: 2 }}>
                     Lab Results
                 </Typography>
 
-                <List sx={{ maxHeight: 135, overflow: "auto" }}>
+                <List sx={{ maxHeight: 140, overflow: "auto" }}>
                     {apiData.map((test, index) => (
                         <ListItem
                             key={index}

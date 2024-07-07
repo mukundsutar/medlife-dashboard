@@ -15,12 +15,12 @@ import React from "react";
 export default function DiagnosticList({ apiData }) {
     return (
         <>
-            <Box sx={{ bgcolor: "#fff", p: 2 }}>
-                <Typography variant="h5" sx={{ mb: 4 }}>
+            <Box sx={{ bgcolor: "#fff", p: 2, borderRadius: 5 }}>
+                <Typography variant="h5" sx={{ mb: 2 }}>
                     Diagnostic List
                 </Typography>
 
-                <TableContainer sx={{ mt: 2, mx: "auto", maxHeight: 200 }}>
+                <TableContainer sx={{ mt: 2, mx: "auto", maxHeight: 220 }}>
                     <Table
                         sx={{
                             [`& .${tableCellClasses.head}`]: {

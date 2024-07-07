@@ -77,15 +77,15 @@ export default function DiagnosisHistory({ apiData }) {
                     bgcolor: "#fff",
                     display: "flex",
                     flexDirection: "column",
-                    py: 2,
+                    p: 2,
+                    borderRadius: 5,
                 }}
             >
-                <CssBaseline />
                 <Typography
                     variant="h5"
                     sx={{
                         px: 3,
-                        mb: 4,
+                        mb: 2,
                     }}
                 >
                     Diagnosis History
@@ -98,15 +98,15 @@ export default function DiagnosisHistory({ apiData }) {
                         display: "flex",
                         alignItems: "flex-start",
                         justifyContent: "space-evenly",
-                        mx: 2,
                         py: 2,
-                        borderRadius: 5,
+                        borderRadius: 3,
                     }}
                 >
-                    <Box>
-                        <Typography variant="body1" sx={{ mb: 1, width: 450 }}>
+                    <Box sx={{ width: 1, mx: 3 }}>
+                        <Typography variant="body1" sx={{ mb: 1 }}>
                             Blood Pressure
                         </Typography>
+
                         <ResponsiveContainer height={200} width={"100%"}>
                             <LineChart
                                 margin={{ left: -25, right: 13, top: 10 }}
@@ -193,7 +193,7 @@ export default function DiagnosisHistory({ apiData }) {
 
                         <Divider
                             flexItem
-                            sx={{ my: 2, width: 1, color: "#CBC8D4" }}
+                            sx={{ my: 2, width: "90%", color: "#CBC8D4" }}
                         />
 
                         <Typography
@@ -237,13 +237,17 @@ export default function DiagnosisHistory({ apiData }) {
                     sx={{
                         display: "flex",
                         flexDirection: "row",
-                        gap: 4.5,
+                        gap: 5,
                         mx: "auto",
                         mt: 2,
                     }}
                 >
                     {stats.map((item, index) => (
-                        <Card key={index} elevation={0} sx={{ width: 200 }}>
+                        <Card
+                            key={index}
+                            elevation={0}
+                            sx={{ width: 200, borderRadius: 3 }}
+                        >
                             <CardActionArea>
                                 <CardContent
                                     sx={{

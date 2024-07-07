@@ -26,16 +26,14 @@ export default function Patients({ apiData }) {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    position: "relative",
-                    overflowY: "auto",
-                    overflowX: "hidden",
-                    maxHeight: 905,
+                    borderRadius: 5,
+                    pb: 1,
                 }}
             >
                 <ListItem
                     secondaryAction={
-                        <IconButton edge="end" aria-label="delete">
-                            <SearchIcon sx={{ mr: 2 }} />
+                        <IconButton edge="end" sx={{ mr: 0 }}>
+                            <SearchIcon />
                         </IconButton>
                     }
                     sx={{ px: 3 }}
@@ -46,7 +44,7 @@ export default function Patients({ apiData }) {
                     />
                 </ListItem>
 
-                <List sx={{ width: 330 }}>
+                <List sx={{ width: 330, maxHeight: 835, overflow: "auto" }}>
                     {apiData.map((item, index) => (
                         <ListItem
                             key={index}

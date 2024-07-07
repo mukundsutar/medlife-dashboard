@@ -21,9 +21,9 @@ export default function Header() {
     const buttonStyle = {
         borderRadius: 20,
         mx: 1,
-        backgroundColor: "transparent",
+        bgcolor: "#fff",
         "&:hover": {
-            backgroundColor: "#01F0D0", // Replace with your desired hover color
+            backgroundColor: "#fff",
         },
     };
 
@@ -73,7 +73,14 @@ export default function Header() {
                     </Button>
                     <Button
                         variant="contained"
-                        sx={buttonStyle}
+                        sx={{
+                            borderRadius: 20,
+                            mx: 1,
+                            backgroundColor: "#01F0D0",
+                            "&:hover": {
+                                backgroundColor: "#01F0D0",
+                            },
+                        }}
                         startIcon={
                             <Icon sx={{ width: 1 }}>
                                 <Avatar

@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, CssBaseline, Grid, Typography } from "@mui/material";
 import Header from "./components/header";
 import Patients from "./components/patients";
 import DiagnosisHistory from "./components/diagnosis_history";
@@ -42,11 +42,15 @@ function App() {
 
     return (
         <>
-            <Container sx={{ height: 1, bgcolor: "#f6f7f8" }} maxWidth={"xl"}>
+            <CssBaseline />
+            <Container
+                sx={{ height: 1, bgcolor: "#83c5be", p: 2 }}
+                maxWidth={"xl"}
+            >
                 <Header />
 
                 {apiData && (
-                    <Grid container spacing={4} sx={{ my: 1 }}>
+                    <Grid container spacing={4} sx={{ my: 0 }}>
                         <Grid item xs={3}>
                             <Patients apiData={apiData} />
                         </Grid>
