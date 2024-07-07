@@ -38,7 +38,7 @@ export default function DiagnosisHistory({ apiData }) {
 
     for (let i = 0; i < apiData.length; i++) {
         let row = {
-            name: `${apiData[i].month}, ${apiData[i].year}`,
+            name: `${apiData[i].month.substring(0, 3)}, ${apiData[i].year}`,
             systolic: apiData[i].blood_pressure.systolic.value,
             diastolic: apiData[i].blood_pressure.diastolic.value,
         };

@@ -140,28 +140,39 @@ export default function Header() {
                     </Button>
                 </Box>
 
-                <CardHeader
-                    avatar={<Avatar src={DoctorPfp} />}
-                    title="Walter White"
-                    subheader="Cook"
-                    action={
-                        <IconButton>
-                            <Divider
-                                orientation="vertical"
-                                flexItem
-                                sx={{ mx: 1 }}
-                            />
-                            <SettingsIcon />
-                            <MoreVertIcon />
-                        </IconButton>
-                    }
+                <Box
                     sx={{
-                        borderRadius: 20,
-                        "&:hover": {
-                            backgroundColor: "#f6f7f8", // Replace with your desired hover color
-                        },
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
                     }}
-                />
+                >
+                    <CardHeader
+                        avatar={<Avatar src={DoctorPfp} />}
+                        title="Walter White"
+                        subheader="Cook"
+                        sx={{
+                            borderRadius: 20,
+                            "&:hover": {
+                                backgroundColor: "#f6f7f8", // Replace with your desired hover color
+                            },
+                        }}
+                    />
+
+                    <Divider
+                        orientation="vertical"
+                        flexItem
+                        sx={{ height: 50, my: "auto", mx: 1 }}
+                    />
+
+                    <IconButton>
+                        <SettingsIcon />
+                    </IconButton>
+                    <IconButton>
+                        <MoreVertIcon />
+                    </IconButton>
+                </Box>
             </Box>
         </>
     );
