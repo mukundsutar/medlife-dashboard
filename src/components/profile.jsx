@@ -1,13 +1,4 @@
-import {
-    Avatar,
-    Box,
-    Button,
-    CardHeader,
-    IconButton,
-    Typography,
-} from "@mui/material";
-import React, { useEffect, useState } from "react";
-import ProfilePhoto from "../assets/profile_photo.png";
+import { Avatar, Box, Button, CardHeader, Typography } from "@mui/material";
 import BirthIcon from "../assets/BirthIcon.svg";
 import FemaleIcon from "../assets/FemaleIcon.svg";
 import PhoneIcon from "../assets/PhoneIcon.svg";
@@ -54,7 +45,7 @@ export default function Profile({ apiData }) {
                 >
                     <Avatar
                         src={apiData.profile_picture}
-                        sx={{ width: 180, height: 180, mt: 4 }}
+                        sx={{ width: 180, height: 180, mt: 4, mb: 2 }}
                     />
 
                     <Typography variant="h5">{apiData.name}</Typography>
@@ -91,7 +82,7 @@ export default function Profile({ apiData }) {
                             textTransform: "capitalize",
                             borderRadius: 20,
                             px: 5,
-                            m: 4,
+                            m: 3,
                         }}
                     >
                         Show All Information
