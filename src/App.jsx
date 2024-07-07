@@ -44,7 +44,7 @@ function App() {
         <>
             <CssBaseline />
             <Container
-                sx={{ height: 1, bgcolor: "#83c5be", p: 2 }}
+                sx={{ height: 1, bgcolor: "#F6F7F8", p: 2 }}
                 maxWidth={"xl"}
             >
                 <Header />
