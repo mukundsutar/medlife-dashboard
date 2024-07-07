@@ -6,91 +6,97 @@ import {
     IconButton,
     Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProfilePhoto from "../assets/profile_photo.png";
 import BirthIcon from "../assets/BirthIcon.svg";
 import FemaleIcon from "../assets/FemaleIcon.svg";
 import PhoneIcon from "../assets/PhoneIcon.svg";
 import InsuranceIcon from "../assets/InsuranceIcon.svg";
 
-export default function Profile() {
-    const arr = ["", "", "", "", ""];
-
+export default function Profile({ apiData }) {
     const profileData = [
         {
             title: "Date of Birth",
-            value: "August 23, 1996",
+            value: apiData.date_of_birth,
             icon: BirthIcon,
         },
-        { title: "Gender", value: "Female", icon: FemaleIcon },
-        { title: "Contact Info.", value: "(415) 555-1234", icon: PhoneIcon },
+        { title: "Gender", value: apiData.gender, icon: FemaleIcon },
+        {
+            title: "Contact Info.",
+            value: apiData.phone_number,
+            icon: PhoneIcon,
+        },
         {
             title: "Emergency Contact",
-            value: "(415) 555-5678",
+            value: apiData.emergency_contact,
             icon: PhoneIcon,
         },
         {
             title: "Insurance Provider",
-            value: "Sunrise Health Assurance",
+            value: apiData.insurance_type,
             icon: InsuranceIcon,
         },
     ];
 
     return (
         <>
-            <Box
-                sx={{
-                    bgcolor: "#fff",
-                    width: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "space-evenly",
-                }}
-            >
-                <Avatar
-                    src={ProfilePhoto}
-                    sx={{ width: 180, height: 180, mt: 4 }}
-                />
-
-                <Typography variant="h5">Jessica Taylor</Typography>
-
+            {apiData && (
                 <Box
                     sx={{
+                        bgcolor: "#fff",
+                        width: 1,
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-start",
-                        justifyContent: "flex-start",
-                        width: 325,
-                        mt: 2,
-                        pl: 3,
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
                     }}
                 >
-                    {profileData.map((item, index) => (
-                        <CardHeader
-                            key={index}
-                            avatar={<Avatar src={item.icon} />}
-                            title={item.title}
-                            titleTypographyProps={{ variant: "body2" }}
-                            subheader={item.value}
-                            subheaderTypographyProps={{ fontWeight: "bold" }}
-                            sx={{ p: 1 }}
-                        />
-                    ))}
-                </Box>
+                    <Avatar
+                        src={apiData.profile_picture}
+                        sx={{ width: 180, height: 180, mt: 4 }}
+                    />
 
-                <Button
-                    variant="contained"
-                    sx={{
-                        textTransform: "capitalize",
-                        borderRadius: 20,
-                        px: 5,
-                        m: 4,
-                    }}
-                >
-                    Show All Information
-                </Button>
-            </Box>
+                    <Typography variant="h5">{apiData.name}</Typography>
+
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "flex-start",
+                            justifyContent: "flex-start",
+                            width: 325,
+                            mt: 2,
+                            pl: 3,
+                        }}
+                    >
+                        {profileData.map((item, index) => (
+                            <CardHeader
+                                key={index}
+                                avatar={<Avatar src={item.icon} />}
+                                title={item.title}
+                                titleTypographyProps={{ variant: "body2" }}
+                                subheader={item.value}
+                                subheaderTypographyProps={{
+                                    fontWeight: "bold",
+                                }}
+                                sx={{ p: 1 }}
+                            />
+                        ))}
+                    </Box>
+
+                    <Button
+                        variant="contained"
+                        sx={{
+                            textTransform: "capitalize",
+                            borderRadius: 20,
+                            px: 5,
+                            m: 4,
+                        }}
+                    >
+                        Show All Information
+                    </Button>
+                </Box>
+            )}
         </>
     );
 }

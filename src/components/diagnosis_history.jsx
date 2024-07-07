@@ -20,70 +20,53 @@ import {
     ResponsiveContainer,
 } from "recharts";
 import CircleIcon from "@mui/icons-material/Circle";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { theme } from "../custom_themes";
+import Heart from "../assets/heart.png";
+import Lungs from "../assets/lungs.png";
+import Thermometer from "../assets/thermometer.png";
 
-const data = [
-    {
-        name: "Jan, 2024",
-        uv: 400,
-        pv: 240,
-        amt: 240,
-    },
-    {
-        name: "Jan, 2024",
-        uv: 300,
-        pv: 139,
-        amt: 221,
-    },
-    {
-        name: "Jan, 2024",
-        uv: 200,
-        pv: 480,
-        amt: 229,
-    },
-    {
-        name: "Jan, 2024",
-        uv: 278,
-        pv: 390,
-        amt: 200,
-    },
-    {
-        name: "Jan, 2024",
-        uv: 189,
-        pv: 480,
-        amt: 218,
-    },
-    {
-        name: "Jan, 2024",
-        uv: 239,
-        pv: 380,
-        amt: 250,
-    },
-];
+// {
+//     name: "Jan, 2024",
+//     uv: 239,
+//     pv: 380,
+//     amt: 250,
+// },
 
-export default function DiagnosisHistory() {
-    const arr = ["", "", ""];
+export default function DiagnosisHistory({ apiData }) {
+    const data = [];
+
+    for (let i = 0; i < apiData.length; i++) {
+        let row = {
+            name: `${apiData[i].month}, ${apiData[i].year}`,
+            systolic: apiData[i].blood_pressure.systolic.value,
+            diastolic: apiData[i].blood_pressure.diastolic.value,
+        };
+
+        data.push(row);
+    }
+
     const stats = [
         {
             color: "#E0F3FA",
             title: "Respiratory Rate",
-            value: "20 bpm",
-            subtitle: "Normal",
+            value: apiData[0].respiratory_rate.value + " bpm",
+            subtitle: apiData[0].respiratory_rate.levels,
+            icon: Lungs,
         },
         {
             color: "#FFE6E9",
             title: "Temperature",
-            value: "98.6°F",
-            subtitle: "Normal",
+            value: apiData[0].temperature.value + "°F",
+            subtitle: apiData[0].temperature.levels,
+            icon: Thermometer,
         },
         {
-            color: "##FFE6F1",
+            color: "#ffe6f1",
             title: "Heart Rate",
-            value: "78 bpm",
-            subtitle: "Lower than Average",
+            value: apiData[0].heart_rate.value + " bpm",
+            subtitle: apiData[0].heart_rate.levels,
+            icon: Heart,
         },
     ];
 
@@ -126,13 +109,13 @@ export default function DiagnosisHistory() {
                         </Typography>
                         <ResponsiveContainer height={200} width={"100%"}>
                             <LineChart
-                                margin={{ left: -25, right: 13 }}
-                                data={data}
+                                margin={{ left: -25, right: 13, top: 10 }}
+                                data={data.reverse()}
                             >
                                 <CartesianGrid vertical={false} />
                                 <XAxis
                                     dataKey="name"
-                                    fontSize={15}
+                                    fontSize={12}
                                     tickLine={false}
                                 />
                                 <YAxis />
@@ -140,7 +123,7 @@ export default function DiagnosisHistory() {
                                 <Legend />
                                 <Line
                                     type="monotone"
-                                    dataKey="uv"
+                                    dataKey="systolic"
                                     stroke="#E66FD2"
                                     strokeWidth={3}
                                     dot={{
@@ -151,7 +134,7 @@ export default function DiagnosisHistory() {
                                 />
                                 <Line
                                     type="monotone"
-                                    dataKey="pv"
+                                    dataKey="diastolic"
                                     stroke="#8C6FE6"
                                     strokeWidth={3}
                                     dot={{
@@ -186,13 +169,26 @@ export default function DiagnosisHistory() {
                             />{" "}
                             Systolic
                         </Typography>
-                        <Typography variant="h5">160</Typography>
+                        <Typography variant="h5">
+                            {apiData[0].blood_pressure.systolic.value}
+                        </Typography>
                         <Typography
                             variant="body2"
                             sx={{ display: "flex", alignItems: "center" }}
                         >
-                            <ArrowDropUpIcon sx={{ width: 30, ml: -1 }} />{" "}
-                            Higher than Average
+                            {apiData[0].blood_pressure.systolic.levels ==
+                            "Lower than Average" ? (
+                                <ArrowDropDownIcon sx={{ width: 30, ml: -1 }} />
+                            ) : (
+                                ""
+                            )}
+                            {apiData[0].blood_pressure.systolic.levels ==
+                            "Higher than Average" ? (
+                                <ArrowDropUpIcon sx={{ width: 30, ml: -1 }} />
+                            ) : (
+                                ""
+                            )}
+                            {apiData[0].blood_pressure.systolic.levels}
                         </Typography>
 
                         <Divider
@@ -213,13 +209,26 @@ export default function DiagnosisHistory() {
                             />
                             Diastolic
                         </Typography>
-                        <Typography variant="h5">78</Typography>
+                        <Typography variant="h5">
+                            {apiData[0].blood_pressure.diastolic.value}
+                        </Typography>
                         <Typography
                             variant="body2"
                             sx={{ display: "flex", alignItems: "center" }}
                         >
-                            <ArrowDropDownIcon sx={{ width: 30, ml: -1 }} />{" "}
-                            Lower than Average
+                            {apiData[0].blood_pressure.diastolic.levels ==
+                            "Lower than Average" ? (
+                                <ArrowDropDownIcon sx={{ width: 30, ml: -1 }} />
+                            ) : (
+                                ""
+                            )}
+                            {apiData[0].blood_pressure.diastolic.levels ==
+                            "Higher than Average" ? (
+                                <ArrowDropUpIcon sx={{ width: 30, ml: -1 }} />
+                            ) : (
+                                ""
+                            )}
+                            {apiData[0].blood_pressure.diastolic.levels}
                         </Typography>
                     </Box>
                 </Box>
@@ -234,20 +243,19 @@ export default function DiagnosisHistory() {
                     }}
                 >
                     {stats.map((item, index) => (
-                        <Card key={index} elevation={0}>
+                        <Card key={index} elevation={0} sx={{ width: 200 }}>
                             <CardActionArea>
                                 <CardContent
                                     sx={{
-                                        bgcolor: "#e0f3fa",
+                                        bgcolor: `${item.color}`,
                                         display: "flex",
                                         flexDirection: "column",
                                         alignItems: "flex-start",
-                                        pr: 6.5,
-                                        pl: 4,
+                                        pl: 2,
                                     }}
                                 >
                                     <Avatar
-                                        src="https://picsum.photos/400"
+                                        src={item.icon}
                                         sx={{ width: 80, height: 80 }}
                                     />
 
@@ -262,8 +270,29 @@ export default function DiagnosisHistory() {
                                     </Typography>
                                     <Typography
                                         variant="caption"
-                                        sx={{ mt: 1 }}
+                                        sx={{
+                                            mt: 1,
+                                            display: "flex",
+                                            alignItems: "center",
+                                        }}
                                     >
+                                        {" "}
+                                        {item.subtitle ==
+                                        "Lower than Average" ? (
+                                            <ArrowDropDownIcon
+                                                sx={{ width: 30, ml: -1 }}
+                                            />
+                                        ) : (
+                                            ""
+                                        )}
+                                        {item.subtitle ==
+                                        "Higher than Average" ? (
+                                            <ArrowDropUpIcon
+                                                sx={{ width: 30, ml: -1 }}
+                                            />
+                                        ) : (
+                                            ""
+                                        )}
                                         {item.subtitle}
                                     </Typography>
                                 </CardContent>

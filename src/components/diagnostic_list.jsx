@@ -12,30 +12,7 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const diagnosticList = [
-    {
-        problem: "Hypertension",
-        description: "Chronic high blood pressure",
-        status: "Under Observation",
-    },
-    {
-        problem: "Type 2 Diabetes",
-        description: "Insulin resistance and elevated blood sugar",
-        status: "Cured",
-    },
-    {
-        problem: "Asthma",
-        description: "Recurrent episodes of bronchial constriction",
-        status: "Inactive",
-    },
-    {
-        problem: "Osteoarthritis",
-        description: "Degenerative joint disease",
-        status: "Unreported",
-    },
-];
-
-export default function DiagnosticList() {
+export default function DiagnosticList({ apiData }) {
     return (
         <>
             <Box sx={{ bgcolor: "#fff", p: 2 }}>
@@ -71,7 +48,7 @@ export default function DiagnosticList() {
                                 maxHeight: 100,
                             }}
                         >
-                            {diagnosticList.map((row, index) => (
+                            {apiData.map((row, index) => (
                                 <TableRow
                                     key={index}
                                     sx={{
@@ -84,7 +61,7 @@ export default function DiagnosticList() {
                                     }}
                                 >
                                     <TableCell component="th" scope="row">
-                                        {row.problem}
+                                        {row.name}
                                     </TableCell>
                                     <TableCell>{row.description}</TableCell>
                                     <TableCell>{row.status}</TableCell>

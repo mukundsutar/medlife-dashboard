@@ -13,7 +13,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
-export default function Patients() {
+export default function Patients({ apiData }) {
     const arr = ["", "", "", "", "", "", "", "", "", "", "", ""];
 
     return (
@@ -47,7 +47,7 @@ export default function Patients() {
                 </ListItem>
 
                 <List sx={{ width: 330 }}>
-                    {arr.map((_, index) => (
+                    {apiData.map((item, index) => (
                         <ListItem
                             key={index}
                             secondaryAction={
@@ -63,11 +63,11 @@ export default function Patients() {
                             }}
                         >
                             <ListItemAvatar>
-                                <Avatar src="https://picsum.photos/200" />
+                                <Avatar src={item.profile_picture} />
                             </ListItemAvatar>
                             <ListItemText
-                                primary="Work"
-                                secondary="Jan 7, 2014"
+                                primary={item.name}
+                                secondary={`${item.gender}, ${item.age}`}
                             />
                         </ListItem>
                     ))}

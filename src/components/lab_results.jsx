@@ -9,14 +9,7 @@ import {
 import React from "react";
 import Download from "../assets/download.png";
 
-export default function LabResults() {
-    const labResults = [
-        "Blood Tests",
-        "CT Scans",
-        "Radiology Reports",
-        "X-Rays",
-        "Urine Test",
-    ];
+export default function LabResults({apiData}) {
 
     return (
         <>
@@ -26,7 +19,7 @@ export default function LabResults() {
                 </Typography>
 
                 <List sx={{ maxHeight: 135, overflow: "auto" }}>
-                    {labResults.map((test, index) => (
+                    {apiData.map((test, index) => (
                         <ListItem
                             key={index}
                             secondaryAction={
