@@ -5,13 +5,27 @@ import {
     CardHeader,
     IconButton,
     Divider,
+    Icon,
 } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Logo from "../assets/TestLogo.svg";
+import Home from "../assets/home.png";
+import Group from "../assets/group.png";
+import Calendar from "../assets/calendar.png";
+import ChatBubble from "../assets/chat_bubble.png";
+import CreditCard from "../assets/credit_card.png";
+import DoctorPfp from "../assets/doctor.png";
 
 export default function Header() {
-    const buttonStyle = { borderRadius: 20, mx: 1 };
+    const buttonStyle = {
+        borderRadius: 20,
+        mx: 1,
+        backgroundColor: "transparent",
+        "&:hover": {
+            backgroundColor: "#01F0D0", // Replace with your desired hover color
+        },
+    };
 
     return (
         <>
@@ -22,7 +36,7 @@ export default function Header() {
                     alignItems: "center",
                     justifyContent: "space-between",
                     px: 4,
-                    bgcolor: "#d8f3dc",
+                    bgcolor: "#fff",
                     borderRadius: 20,
                 }}
             >
@@ -44,26 +58,83 @@ export default function Header() {
                 >
                     <Button
                         variant="contained"
-                        sx={{ borderRadius: 20, mx: 1 }}
+                        sx={buttonStyle}
+                        startIcon={
+                            <Icon sx={{ width: 1 }}>
+                                <Avatar
+                                    variant="square"
+                                    src={Home}
+                                    sx={{ width: 18, height: 18 }}
+                                />
+                            </Icon>
+                        }
                     >
                         Overview
                     </Button>
-                    <Button variant="contained" sx={buttonStyle}>
+                    <Button
+                        variant="contained"
+                        sx={buttonStyle}
+                        startIcon={
+                            <Icon sx={{ width: 1 }}>
+                                <Avatar
+                                    variant="square"
+                                    src={Group}
+                                    sx={{ width: 24, height: 16 }}
+                                />
+                            </Icon>
+                        }
+                    >
                         Patients
                     </Button>
-                    <Button variant="contained" sx={buttonStyle}>
+                    <Button
+                        variant="contained"
+                        sx={buttonStyle}
+                        startIcon={
+                            <Icon sx={{ width: 1 }}>
+                                <Avatar
+                                    variant="square"
+                                    src={Calendar}
+                                    sx={{ width: 18, height: 18 }}
+                                />
+                            </Icon>
+                        }
+                    >
                         Schedule
                     </Button>
-                    <Button variant="contained" sx={buttonStyle}>
+                    <Button
+                        variant="contained"
+                        sx={buttonStyle}
+                        startIcon={
+                            <Icon sx={{ width: 1 }}>
+                                <Avatar
+                                    variant="square"
+                                    src={ChatBubble}
+                                    sx={{ width: 21, height: 18 }}
+                                />
+                            </Icon>
+                        }
+                    >
                         Message
                     </Button>
-                    <Button variant="contained" sx={buttonStyle}>
+                    <Button
+                        variant="contained"
+                        sx={buttonStyle}
+                        startIcon={
+                            <Icon sx={{ width: 1 }}>
+                                <Avatar
+                                    variant="square"
+                                    src={CreditCard}
+                                    sx={{ width: 22, height: 18 }}
+                                />
+                            </Icon>
+                        }
+                    >
                         Transactions
                     </Button>
                 </Box>
 
                 <CardHeader
-                    avatar={<Avatar src="https://picsum.photos/250" />}
+                    avatar={<Avatar src={DoctorPfp} />}
                     title="Walter White"
                     subheader="Cook"
                     action={
@@ -77,6 +148,12 @@ export default function Header() {
                             <MoreVertIcon />
                         </IconButton>
                     }
+                    sx={{
+                        borderRadius: 20,
+                        "&:hover": {
+                            backgroundColor: "#f6f7f8", // Replace with your desired hover color
+                        },
+                    }}
                 />
             </Box>
         </>

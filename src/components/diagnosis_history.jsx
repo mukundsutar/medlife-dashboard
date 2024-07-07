@@ -1,4 +1,14 @@
-import { Typography, Box, Divider, Grid } from "@mui/material";
+import {
+    Typography,
+    Box,
+    Divider,
+    Grid,
+    CardContent,
+    Avatar,
+    Card,
+    CardActionArea,
+    CssBaseline,
+} from "@mui/material";
 import {
     LineChart,
     Line,
@@ -7,11 +17,13 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
-    ReferenceLine,
-    ReferenceDot,
-    ReferenceArea,
     ResponsiveContainer,
 } from "recharts";
+import CircleIcon from "@mui/icons-material/Circle";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { theme } from "../custom_themes";
 
 const data = [
     {
@@ -53,6 +65,28 @@ const data = [
 ];
 
 export default function DiagnosisHistory() {
+    const arr = ["", "", ""];
+    const stats = [
+        {
+            color: "#E0F3FA",
+            title: "Respiratory Rate",
+            value: "20 bpm",
+            subtitle: "Normal",
+        },
+        {
+            color: "#FFE6E9",
+            title: "Temperature",
+            value: "98.6°F",
+            subtitle: "Normal",
+        },
+        {
+            color: "##FFE6F1",
+            title: "Heart Rate",
+            value: "78 bpm",
+            subtitle: "Lower than Average",
+        },
+    ];
+
     return (
         <>
             <Box
@@ -63,7 +97,14 @@ export default function DiagnosisHistory() {
                     py: 2,
                 }}
             >
-                <Typography variant="h5" sx={{ px: 3, mb: 4 }}>
+                <CssBaseline />
+                <Typography
+                    variant="h5"
+                    sx={{
+                        px: 3,
+                        mb: 4,
+                    }}
+                >
                     Diagnosis History
                 </Typography>
 
@@ -80,7 +121,7 @@ export default function DiagnosisHistory() {
                     }}
                 >
                     <Box>
-                        <Typography variant="body1" sx={{ mb: 1 }}>
+                        <Typography variant="body1" sx={{ mb: 1, width: 450 }}>
                             Blood Pressure
                         </Typography>
                         <ResponsiveContainer height={200} width={"100%"}>
@@ -99,23 +140,23 @@ export default function DiagnosisHistory() {
                                 <Legend />
                                 <Line
                                     type="monotone"
-                                    dataKey="pv"
-                                    stroke="#8884d8"
+                                    dataKey="uv"
+                                    stroke="#E66FD2"
                                     strokeWidth={3}
                                     dot={{
                                         strokeWidth: 7,
-                                        stroke: "#8884d8",
+                                        stroke: "#E66FD2",
                                     }}
                                     legendType="none"
                                 />
                                 <Line
                                     type="monotone"
-                                    dataKey="uv"
-                                    stroke="#82ca9d"
+                                    dataKey="pv"
+                                    stroke="#8C6FE6"
                                     strokeWidth={3}
                                     dot={{
                                         strokeWidth: 7,
-                                        stroke: "#82ca9d",
+                                        stroke: "#8C6FE6",
                                     }}
                                     legendType="none"
                                 />
@@ -125,31 +166,110 @@ export default function DiagnosisHistory() {
 
                     <Box
                         sx={{
-                            width: "20%",
+                            width: "25%",
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "flex-start",
                             justifyContent: "flex-start",
                         }}
                     >
-                        <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                fontWeight: "bold",
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                        >
+                            <CircleIcon
+                                sx={{ width: 18, mr: 0.5, color: "#E66FD2" }}
+                            />{" "}
                             Systolic
                         </Typography>
                         <Typography variant="h5">160</Typography>
-                        <Typography variant="body2">
+                        <Typography
+                            variant="body2"
+                            sx={{ display: "flex", alignItems: "center" }}
+                        >
+                            <ArrowDropUpIcon sx={{ width: 30, ml: -1 }} />{" "}
                             Higher than Average
                         </Typography>
 
-                        <Divider flexItem sx={{ my: 2, width: 1 }} />
+                        <Divider
+                            flexItem
+                            sx={{ my: 2, width: 1, color: "#CBC8D4" }}
+                        />
 
-                        <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                fontWeight: "bold",
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                        >
+                            <CircleIcon
+                                sx={{ width: 18, mr: 0.5, color: "#8C6FE6" }}
+                            />
                             Diastolic
                         </Typography>
                         <Typography variant="h5">78</Typography>
-                        <Typography variant="body2">
+                        <Typography
+                            variant="body2"
+                            sx={{ display: "flex", alignItems: "center" }}
+                        >
+                            <ArrowDropDownIcon sx={{ width: 30, ml: -1 }} />{" "}
                             Lower than Average
                         </Typography>
                     </Box>
+                </Box>
+
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: 4.5,
+                        mx: "auto",
+                        mt: 2,
+                    }}
+                >
+                    {stats.map((item, index) => (
+                        <Card key={index} elevation={0}>
+                            <CardActionArea>
+                                <CardContent
+                                    sx={{
+                                        bgcolor: "#e0f3fa",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "flex-start",
+                                        pr: 6.5,
+                                        pl: 4,
+                                    }}
+                                >
+                                    <Avatar
+                                        src="https://picsum.photos/400"
+                                        sx={{ width: 80, height: 80 }}
+                                    />
+
+                                    <Typography
+                                        variant="subtitle2"
+                                        sx={{ mt: 1 }}
+                                    >
+                                        {item.title}
+                                    </Typography>
+                                    <Typography variant="h5">
+                                        {item.value}
+                                    </Typography>
+                                    <Typography
+                                        variant="caption"
+                                        sx={{ mt: 1 }}
+                                    >
+                                        {item.subtitle}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    ))}
                 </Box>
             </Box>
         </>

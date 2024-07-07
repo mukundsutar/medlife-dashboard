@@ -14,22 +14,22 @@ import SearchIcon from "@mui/icons-material/Search";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 export default function Patients() {
-    const arr = ["", "", "", "", "", "", "", "", "", ""];
+    const arr = ["", "", "", "", "", "", "", "", "", "", "", ""];
 
     return (
         <>
             <Box
                 sx={{
-                    bgcolor: "#e9ecef",
+                    bgcolor: "#fff",
                     height: 1,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    // position: "relative",
-                    // overflowY: "auto",
-                    // overflowX: "hidden",
-                    // maxHeight: 300,
+                    position: "relative",
+                    overflowY: "auto",
+                    overflowX: "hidden",
+                    maxHeight: 905,
                 }}
             >
                 <ListItem
@@ -55,7 +55,12 @@ export default function Patients() {
                                     <MoreHorizIcon sx={{ mr: 2 }} />
                                 </IconButton>
                             }
-                            sx={{ px: 3 }}
+                            sx={{
+                                px: 3,
+                                "&:hover": {
+                                    backgroundColor: "#D8FCF7",
+                                },
+                            }}
                         >
                             <ListItemAvatar>
                                 <Avatar src="https://picsum.photos/200" />
