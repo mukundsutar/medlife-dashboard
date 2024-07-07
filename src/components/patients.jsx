@@ -54,7 +54,7 @@ export default function Patients({ apiData }) {
                                 </IconButton>
                             }
                             sx={{
-                                px: 3,
+                                px: 2,
                                 "&:hover": {
                                     backgroundColor: "#D8FCF7",
                                 },
