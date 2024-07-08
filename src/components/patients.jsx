@@ -66,6 +66,7 @@ export default function Patients({ apiData }) {
                             <ListItemText
                                 primary={item.name}
                                 secondary={`${item.gender}, ${item.age}`}
+                                secondaryTypographyProps={{color:'#707070'}}
                             />
                         </ListItem>
                     ))}

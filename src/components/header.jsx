@@ -157,6 +157,7 @@ export default function Header() {
                         avatar={<Avatar src={DoctorPfp} />}
                         title="Dr. Jose Simmons"
                         subheader="General Practitioner"
+                        subheaderTypographyProps={{ color: "#707070" }}
                         sx={{
                             borderRadius: 20,
                             "&:hover": {
