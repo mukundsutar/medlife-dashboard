@@ -11,8 +11,8 @@ function App() {
     const [apiData, setApiData] = useState(null);
 
     async function fetchAPIData() {
-        let username = "coalition";
-        let password = "skills-test";
+        let username = import.meta.env.VITE_USERNAME;
+        let password = import.meta.env.VITE_PASSWORD;
         let auth = btoa(`${username}:${password}`);
 
         // Authenticate (dummy API)

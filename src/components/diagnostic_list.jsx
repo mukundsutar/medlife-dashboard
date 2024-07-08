@@ -20,7 +20,7 @@ export default function DiagnosticList({ apiData }) {
                     Diagnostic List
                 </Typography>
 
-                <TableContainer sx={{ mt: 2, mx: "auto", maxHeight: 220 }}>
+                <TableContainer sx={{ mt: 2, mx: "auto", maxHeight: 240 }}>
                     <Table
                         sx={{
                             [`& .${tableCellClasses.head}`]: {

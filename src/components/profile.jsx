@@ -3,12 +3,20 @@ import BirthIcon from "../assets/BirthIcon.svg";
 import FemaleIcon from "../assets/FemaleIcon.svg";
 import PhoneIcon from "../assets/PhoneIcon.svg";
 import InsuranceIcon from "../assets/InsuranceIcon.svg";
+import { theme } from "../custom_themes";
 
 export default function Profile({ apiData }) {
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        return date.toLocaleDateString("en-US", options);
+    }
+
     const profileData = [
         {
             title: "Date of Birth",
-            value: apiData.date_of_birth,
+            value: formatDate(apiData.date_of_birth),
             icon: BirthIcon,
         },
         { title: "Gender", value: apiData.gender, icon: FemaleIcon },
@@ -66,10 +74,12 @@ export default function Profile({ apiData }) {
                                 key={index}
                                 avatar={<Avatar src={item.icon} />}
                                 title={item.title}
-                                titleTypographyProps={{ variant: "body2" }}
+                                titleTypographyProps={{ variant: "subtitle2" }}
                                 subheader={item.value}
                                 subheaderTypographyProps={{
                                     fontWeight: "bold",
+                                    color: theme.palette.text.primary,
+                                    variant: "subtitle2",
                                 }}
                                 sx={{ p: 1 }}
                             />

@@ -68,6 +68,7 @@ export default function Header() {
                                 />
                             </Icon>
                         }
+                        disableElevation
                     >
                         Overview
                     </Button>
@@ -90,6 +91,7 @@ export default function Header() {
                                 />
                             </Icon>
                         }
+                        disableElevation
                     >
                         Patients
                     </Button>
@@ -105,6 +107,7 @@ export default function Header() {
                                 />
                             </Icon>
                         }
+                        disableElevation
                     >
                         Schedule
                     </Button>
@@ -120,6 +123,7 @@ export default function Header() {
                                 />
                             </Icon>
                         }
+                        disableElevation
                     >
                         Message
                     </Button>
@@ -135,6 +139,7 @@ export default function Header() {
                                 />
                             </Icon>
                         }
+                        disableElevation
                     >
                         Transactions
                     </Button>
@@ -150,8 +155,8 @@ export default function Header() {
                 >
                     <CardHeader
                         avatar={<Avatar src={DoctorPfp} />}
-                        title="Walter White"
-                        subheader="Cook"
+                        title="Dr. Jose Simmons"
+                        subheader="General Practitioner"
                         sx={{
                             borderRadius: 20,
                             "&:hover": {
